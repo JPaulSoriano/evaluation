@@ -9,7 +9,7 @@
 </div>
 @endif
 
-<a class="btn btn-success" href="{{ route('users.create') }}">New</a>
+<a class="btn btn-primary" href="{{ route('users.create') }}">New</a>
 <table class="table table-bordered my-2">
  <tr>
    <th>No</th>

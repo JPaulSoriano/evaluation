@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ $faculty->name }}</td>
                     <td>
-                        <a href="{{ route('evaluate', $faculty) }}" class="btn btn-sm btn-block btn-success my-1">Evaluate</a>
+                        <a href="{{ route('evaluate', $faculty) }}" class="btn btn-sm btn-block btn-primary my-1">Evaluate</a>
                     </td>
                 </tr>
                 @endforeach

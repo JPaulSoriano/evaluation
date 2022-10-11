@@ -8,20 +8,20 @@
         </div>
     @endif
 
-    <a class="btn btn-primary" href="{{ route('sections.create') }}">New</a>
+    <a class="btn btn-primary" href="{{ route('academicyears.create') }}">New</a>
     <table class="table table-bordered my-2">
         <tr>
             <th>No</th>
             <th>Name</th>
         </tr>
-        @foreach ($sections as $section)
+        @foreach ($academicyears as $academicyear)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $section->name }}</td>
+            <td>{{ $academicyear->name }}</td>
         </tr>
         @endforeach
     </table>
 
-    {!! $sections->links() !!}
+    {!! $academicyears->links() !!}
 
 @endsection
