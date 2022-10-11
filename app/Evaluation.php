@@ -7,14 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Evaluation extends Model
 {
     protected $fillable = [
-        'student_id', 'faculty_id','section_id'
+        'evaluator_id', 'faculty_id','section_id'
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function faculty()
+    {
+        return $this->belongsTo(User::class, 'faculty_id');
     }
 
-    public function section(){
+    public function evaluator()
+    {
+        return $this->belongsTo(User::class, 'evaluator_id');
+    }
+
+    public function section()
+    {
         return $this->belongsTo('App\Section');
+    }
+
+    public function questions()
+    {
+        return $this->belongsToMany('App\Question', 'evaluation_question')->withPivot('rate')->withTimestamps();
     }
 }

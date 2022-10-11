@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\User;
-use App\Question;
+use Exception;
 use App\Section;
 use App\Category;
+use App\Question;
 use App\Evaluation;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EvaluationController extends Controller
 {
@@ -34,14 +36,48 @@ class EvaluationController extends Controller
 
     public function store(Request $request, User $faculty)
     {
+        // dd($request->all());
+
         $request->validate([
-            'section_id' => 'required'
+            'section_id' => 'required',
+            'rates' => 'required|array',
+            'rates.*' => 'required|integer',
         ]);
 
-        $input = $request->all();
-        $input['faculty_id'] = $faculty->id;
-        Auth::user()->evaluations()->create($input);
+        try
+        {
+            DB::beginTransaction();
+
+            $input = $request->all();
+            $input['faculty_id'] = $faculty->id;
+
+            $rates = collect($request->rates)->map(function ($value, $key) {
+                return ['rate' => $value ];
+            })->toArray();
+
+            $evaluation = Auth::user()->evaluations()->create($input);
+
+            $evaluation->questions()->sync($rates);
+
+            DB::commit();
+
+        }
+        catch(Exception $e)
+        {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Contact Administrator']);
+        }
+
 
         return redirect()->route('evaluations')->with('success','Success!');
+    }
+
+    public function show(Evaluation $evaluation)
+    {
+        $categories = $evaluation->questions->loadMissing(['category'])->mapToGroups(function ($value, $key) {
+            return [$value['category']['name'] => $value];
+        });
+
+        return view('evaluations.show', compact('evaluation', 'categories'));
     }
 }

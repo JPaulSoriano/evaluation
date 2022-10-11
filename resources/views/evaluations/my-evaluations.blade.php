@@ -20,11 +20,15 @@
                 <tr>
                     <th>Faculty</th>
                     <th>Evaluation Date</th>
+                    <th>Action</th>
                 </tr>
                 @foreach ($evaluations as $evaluation)
                 <tr>
-                    <td>{{ $evaluation }}</td>
+                    <td>{{ $evaluation->faculty->name }}</td>
                     <td>{{ $evaluation->created_at }}</td>
+                    <td>
+                        <a href="{{ route('evaluateshow', $evaluation) }}" class="btn btn-primary">Show</a>
+                    </td>
                 </tr>
                 @endforeach
             </table>

@@ -40,26 +40,12 @@
                         <tr>
                             <td>{{ $question->question }}</td>
                             <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rate" value="1">
-                                    <label class="form-check-label">1</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rate" value="2">
-                                    <label class="form-check-label">2</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rate" value="3">
-                                    <label class="form-check-label">3</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rate" value="4">
-                                    <label class="form-check-label">4</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="rate" value="5">
-                                    <label class="form-check-label">5</label>
-                                  </div>
+                                @for($i = 1; $i <= 5; $i++)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="{{ $question->id }}-{{ $i }}" name="rates[{{ $question->id }}]" value="{{ $i }}" required>
+                                        <label class="form-check-label" for="{{ $question->id }}-{{ $i }}">{{ $i }}</label>
+                                    </div>
+                                @endfor
                             </td>
                         </tr>
                     @endforeach
