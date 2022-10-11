@@ -31,9 +31,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('questions','QuestionController');
     Route::get('activate/{question}', 'QuestionController@activate')->name('activate');
     Route::delete('deactivate/{question}', 'QuestionController@deactivate')->name('deactivate');
-    Route::get('evaluations', 'EvaluationController@index')->name('evaluations');
     //Evaulations
+    Route::get('evaluations', 'EvaluationController@index')->name('evaluations');
+    Route::get('my-evaluations', 'EvaluationController@myevaluation')->name('myevaluations');
     Route::get('evaluations/{faculty}', 'EvaluationController@create')->name('evaluate');
+    Route::post('evaluations/{faculty}/store','EvaluationController@store')->name('evaluatestore');
     //Sections
     Route::resource('sections','SectionController');
 });

@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label>Select Your Current Section</label>
+                <label>Select Category</label>
                 <select class="form-control" name="category_id">
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>

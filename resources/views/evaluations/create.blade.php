@@ -8,6 +8,8 @@
         <div class="col-sm-12 text-center">
             <h3><span class="font-weight-bold">You're Currently Evaluating:</span> {{ $faculty->name }}</h3>
         </div>
+    <form action="{{ route('evaluatestore', $faculty) }}" method="POST" class="w-100">
+        @csrf
         <div class="col-sm-4">
             <div class="form-group">
                 <label>Select Your Current Section</label>
@@ -64,6 +66,10 @@
                 @endforeach
             </table>
         </div>
+        <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
     </div>
 </div>
 @endsection
