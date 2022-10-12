@@ -27,7 +27,7 @@
                     <td>{{ $evaluation->faculty->name }}</td>
                     <td>{{ $evaluation->created_at }}</td>
                     <td>
-                        <a href="{{ route('evaluateshow', $evaluation) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ route('evaluateshow', $evaluation) }}" class="btn btn-sm btn-primary">Show</a>
                     </td>
                 </tr>
                 @endforeach

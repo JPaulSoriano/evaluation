@@ -19,12 +19,18 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Faculty</th>
-                    <th>Reports</th>
+                    <th>Date</th>
+                    <th>Action</th>
                 </tr>
+                @foreach ($evaluations as $evaluation)
                 <tr>
-                    <td>Engelbert Cruz</td>
-                    <td><a class="btn btn-primary" href="{{ route('reports.create') }}">Show Reports</a></td>
+                    <td>{{ $evaluation->faculty->name }}</td>
+                    <td>{{ $evaluation->created_at }}</td>
+                    <td>
+                        <a href="{{ route('reportsshow', $evaluation) }}" class="btn btn-sm btn-primary">Show</a>
+                    </td>
                 </tr>
+                @endforeach
             </table>
         </div>
     </div>

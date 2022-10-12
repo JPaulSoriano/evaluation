@@ -42,5 +42,6 @@ Route::group(['middleware' => ['auth']], function() {
     //Sections
     Route::resource('sections','SectionController');
     //Reports
-    Route::resource('reports','ReportController');
+    Route::get('reports', 'ReportController@index')->name('reports');
+    Route::get('reports/{report}/show', 'ReportController@show')->name('reportsshow');
 });

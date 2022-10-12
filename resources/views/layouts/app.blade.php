@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    UCS Faculty Evaluation System
+                    {{-- UCS Faculty Evaluation System --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@
                                 <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reports.index') }}">{{ __('Reports') }}</a>
+                                <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
