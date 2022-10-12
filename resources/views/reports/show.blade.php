@@ -14,13 +14,15 @@
                 <div class="card-header">Select Section</div>
                 <div class="card-body">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                            4-ST. DOMINIC
-                        </a>
+                        <a href="{{ route('reportsshow', $faculty) }}" class="list-group-item list-group-item-action {{ request()->get('section_id') ? '' : 'active' }}" aria-current="true">All Sections</a>
+                        @foreach ($sections as $section)
+                            <a href="{{ URL::current()."?section_id=".$section->id }}" class="list-group-item list-group-item-action {{ request()->get('section_id') == $section->id ? 'active' : '' }}" aria-current="true">{{ $section->name }}</a>
+                        @endforeach
+                        {{-- <a href="#" class="list-group-item list-group-item-action" aria-current="true">4-ST. DOMINIC</a>
                         <a href="#" class="list-group-item list-group-item-action">4-ST. AGATHA</a>
                         <a href="#" class="list-group-item list-group-item-action">4-ST. MONICA</a>
-                        <a href="#" class="list-group-item list-group-item-action">4-ST. JOHN BOSCO</a>
-                      </div>
+                        <a href="#" class="list-group-item list-group-item-action">4-ST. JOHN BOSCO</a> --}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,11 +32,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div><span class="font-weight-bold">Faculty:</span> Engelbert Cruz</div>
-                            <div><span class="font-weight-bold">Section:</span> 4-ST. DOMINIC</div>
+                            <div><span class="font-weight-bold">Faculty:</span> {{ $faculty->name }}</div>
+                            <div><span class="font-weight-bold">Section:</span> {{ $selectedSection->name ?? $selectedSection }}</div>
                         </div>
                         <div class="col-sm-6">
-                            <div><span class="font-weight-bold">Total Student Evaluated:</span> 30</div>
+                            <div><span class="font-weight-bold">Total Student Evaluated:</span> {{ $evaluations->count() }}</div>
                             <div><span class="font-weight-bold">Academic Year:</span> 2021-2022</div>
                         </div>
                     </div>
@@ -46,22 +48,20 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="table table-bordered my-2">
-                                <tr>
-                                    <th>Category 1</th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>5</th>
-                                </tr>
-                                <tr>
-                                    <td>Test Question</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>40%</td>
-                                    <td>60%</td>
-                                </tr>
+                                @foreach ($categories as $category)
+                                    <tr>
+                                        <th>Category 1</th>
+                                        <th>Average Rate</th>
+                                    </tr>
+                                    @foreach ($category->questions as $question)
+                                        <tr>
+                                            <td>{{ $question->question }}</td>
+                                            <td>{{ $question->mean }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+
+
                             </table>
                         </div>
                     </div>

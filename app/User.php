@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Evaluation::class, 'evaluator_id');
     }
+
+    public function facultyEvaluations()
+    {
+        return $this->hasMany(Evaluation::class, 'faculty_id');
+    }
 }

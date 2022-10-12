@@ -14,24 +14,25 @@
     </div>
 
     <div class="row justify-content-center">
+
         <div class="col-sm-8 my-1">
-            <h4>Reports</h4>
-            <table class="table table-bordered">
-                <tr>
-                    <th>Faculty</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-                @foreach ($evaluations as $evaluation)
-                <tr>
-                    <td>{{ $evaluation->faculty->name }}</td>
-                    <td>{{ $evaluation->created_at }}</td>
-                    <td>
-                        <a href="{{ route('reportsshow', $evaluation) }}" class="btn btn-sm btn-primary">Show</a>
-                    </td>
-                </tr>
-                @endforeach
-            </table>
+            <div>
+
+                <form action="{{ URL::current() }}" method="get">
+                    <div class="row">
+                        <label for="">Select Faculty: </label>
+                        <select name="faculty_id" id="">
+                            <option value="">Select Faculty</option>
+                            @foreach ($faculties as $faculty)
+                            <option value="{{ $faculty->id }}">{{ $faculty->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-primary ml-2">Search</button>
+                    </div>
+                </form>
+            </div>
+
+
         </div>
     </div>
 @endsection

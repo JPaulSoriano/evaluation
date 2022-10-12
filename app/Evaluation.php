@@ -29,4 +29,5 @@ class Evaluation extends Model
     {
         return $this->belongsToMany('App\Question', 'evaluation_question')->withPivot('rate')->withTimestamps();
     }
+
 }

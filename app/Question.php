@@ -13,4 +13,9 @@ class Question extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+
+    public function evaluations()
+    {
+        return $this->belongsToMany('App\Evaluation', 'evaluation_question')->withPivot('rate');
+    }
 }

@@ -91,6 +91,8 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Evaluation[] $evaluations
+ * @property-read int|null $evaluations_count
  * @method static \Illuminate\Database\Eloquent\Builder|Question newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Question newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Question query()
@@ -154,6 +156,8 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Evaluation[] $evaluations
  * @property-read int|null $evaluations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Evaluation[] $facultyEvaluations
+ * @property-read int|null $faculty_evaluations_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
