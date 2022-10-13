@@ -13,7 +13,7 @@ class CreateFacultyUserSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'John Doe',
-        	'email' => 'john@gmail.com',
+        	'email' => 'doe@gmail.com',
         	'password' => bcrypt('password')
         ]);
 
