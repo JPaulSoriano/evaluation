@@ -6,27 +6,31 @@ use Illuminate\Http\Request;
 
 class AcademicYearController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:admin');
+    }
+
     public function index()
     {
-        $academicyears = AcademicYear::latest()->paginate(5);
-        return view('academicyears.index',compact('academicyears'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $academicyears = AcademicYear::get();
+        return view('academicyears.index',compact('academicyears'));
     }
 
-    public function create()
+    public function edit(AcademicYear $academicyear)
     {
-        return view('academicyears.create');
+        return view('academicyears.edit',compact('academicyear'));
     }
 
-    public function store(Request $request)
+    public function update(Request $request, AcademicYear $academicyear)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
-        AcademicYear::create($request->all());
+        $academicyear->update($request->all());
 
         return redirect()->route('academicyears.index')
-                        ->with('success','Academic Year added successfully.');
+                        ->with('success','Academic Year changed successfully');
     }
 }

@@ -3,6 +3,16 @@
 @extends('layouts.app')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -22,7 +32,7 @@
         </div>
         <div class="col-sm-12 my-1">
             <div class="card">
-                <div class="card-header">Rating Legend</div>
+                <div class="card-header bg-primary text-white">Rating Legend</div>
                 <div class="card-body">
                     <div>5 = Strongly Agree 4 = Agree 3 = Uncertain 2 = Disagree 1 = Strongly Disagree</div>
                 </div>

@@ -8,11 +8,16 @@ use App\Section;
 use App\Category;
 use App\Question;
 use App\Evaluation;
+use App\AcademicYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EvaluationController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:student');
+    }
 
     public function index()
     {
@@ -50,6 +55,7 @@ class EvaluationController extends Controller
 
             $input = $request->all();
             $input['faculty_id'] = $faculty->id;
+            $input['academic_year'] = AcademicYear::latest()->first()->name;
 
             $rates = collect($request->rates)->map(function ($value, $key) {
                 return ['rate' => $value ];

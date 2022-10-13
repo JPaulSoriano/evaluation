@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:admin');
+    }
+
     public function index()
     {
         $sections = Section::latest()->paginate(5);

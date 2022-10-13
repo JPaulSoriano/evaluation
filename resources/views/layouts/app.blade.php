@@ -9,8 +9,6 @@
 
     {{-- <title>UCS Faculty Evaluation System</title> --}}
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +16,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -52,33 +52,37 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('evaluations') }}">{{ __('Evaluation') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('myevaluations') }}">{{ __('My Evaluations') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('questions.index') }}">{{ __('Questions') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('sections.index') }}">{{ __('Sections') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('academicyears.index') }}">{{ __('Academic Year') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports') }}</a>
-                            </li>
+                            @can('student')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('evaluations') }}">{{ __('Evaluation') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('myevaluations') }}">{{ __('My Evaluations') }}</a>
+                                </li>
+                            @endcan
+                            @can('admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('questions.index') }}">{{ __('Questions') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('sections.index') }}">{{ __('Sections') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('academicyears.index') }}">{{ __('Academic Year') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports') }}</a>
+                                </li>
+                            @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -108,5 +112,16 @@
             </div>
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        $('.date-own').datepicker({
+           minViewMode: 2,
+           format: 'yyyy'
+         });
+    </script>
+
 </body>
 </html>

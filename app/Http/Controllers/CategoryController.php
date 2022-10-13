@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:admin');
+    }
+
     public function index()
     {
         $categories = Category::latest()->paginate(5);

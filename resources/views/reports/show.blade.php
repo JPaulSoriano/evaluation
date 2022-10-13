@@ -11,24 +11,20 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header">Select Section</div>
+                <div class="card-header bg-primary text-white">Select Section</div>
                 <div class="card-body">
                     <div class="list-group">
-                        <a href="{{ route('reportsshow', $faculty) }}" class="list-group-item list-group-item-action {{ request()->get('section_id') ? '' : 'active' }}" aria-current="true">All Sections</a>
+                        <a href="{{ route('reportsshow', ['faculty' => $faculty, 'academicYear' => $academicYear]) }}" class="list-group-item list-group-item-action {{ request()->get('section_id') ? '' : 'active' }}" aria-current="true">All Sections</a>
                         @foreach ($sections as $section)
                             <a href="{{ URL::current()."?section_id=".$section->id }}" class="list-group-item list-group-item-action {{ request()->get('section_id') == $section->id ? 'active' : '' }}" aria-current="true">{{ $section->name }}</a>
                         @endforeach
-                        {{-- <a href="#" class="list-group-item list-group-item-action" aria-current="true">4-ST. DOMINIC</a>
-                        <a href="#" class="list-group-item list-group-item-action">4-ST. AGATHA</a>
-                        <a href="#" class="list-group-item list-group-item-action">4-ST. MONICA</a>
-                        <a href="#" class="list-group-item list-group-item-action">4-ST. JOHN BOSCO</a> --}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="card">
-                <div class="card-header">Evaluation Report</div>
+                <div class="card-header bg-primary text-white">Evaluation Report</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -37,7 +33,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div><span class="font-weight-bold">Total Student Evaluated:</span> {{ $evaluations->count() }}</div>
-                            <div><span class="font-weight-bold">Academic Year:</span> 2021-2022</div>
+                            <div><span class="font-weight-bold">Academic Year:</span> {{ $evaluations->first()->academic_year }}</div>
                         </div>
                     </div>
                     <div class="row">
@@ -50,7 +46,7 @@
                             <table class="table table-bordered my-2">
                                 @foreach ($categories as $category)
                                     <tr>
-                                        <th>Category 1</th>
+                                        <th>{{ $category->name }}</th>
                                         <th>Average Rate</th>
                                     </tr>
                                     @foreach ($category->questions as $question)

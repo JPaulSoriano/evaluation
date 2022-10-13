@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:admin');
+    }
+
     public function index()
     {
         $questions = Question::latest()->paginate(5);
@@ -35,14 +40,14 @@ class QuestionController extends Controller
 
     public function activate(Question $question)
     {
-        $question->status = '1';
+        $question->status = 1;
         $question->save();
         return redirect()->route('questions.index');
     }
 
     public function deactivate(Question $question)
     {
-        $question->status = '0';
+        $question->status = 0;
         $question->save();
         return redirect()->route('questions.index');
     }

@@ -12,6 +12,11 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:admin');
+    }
+
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);

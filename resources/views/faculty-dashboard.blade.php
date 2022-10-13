@@ -6,7 +6,10 @@
             <h1>Faculty Dashboard</h1>
         </div>
     </div>
+    <div class="alert alert-success" role="alert">
+        Current Faculty Evaluation Academic Year: <span class="font-weight-bold">{{ $academicyears->name }}</span>
+      </div>
     <div class="jumbotron">
-        <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->name }}</span></h1>
+        <h1 class="mb-5">Welcome!  <span class="font-weight-bold">{{ Auth::user()->name }}</span></h1>
     </div>
 @endsection

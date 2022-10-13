@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-
-class CreateAdminUserSeeder extends Seeder
+class CreateStudentUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,11 +12,11 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-        	'name' => 'Administrator',
-        	'email' => 'admin@gmail.com',
+            'name' => 'Juan Dela Cruz',
+        	'email' => 'juan@gmail.com',
         	'password' => bcrypt('password')
         ]);
 
-        $user->assignRole('Admin');
+        $user->assignRole('Student');
     }
 }

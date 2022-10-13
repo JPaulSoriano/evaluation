@@ -18,6 +18,7 @@ class CreateEvaluationsTable extends Migration
             $table->foreignId('evaluator_id');
             $table->foreignId('faculty_id');
             $table->foreignId('section_id');
+            $table->string('academic_year');
             $table->timestamps();
         });
     }
