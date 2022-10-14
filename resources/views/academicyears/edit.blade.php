@@ -23,7 +23,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Name:</label>
-                            <input type="text" name="name" value="{{ $academicyear->name }}" class="form-control" placeholder="Name">
+                            <input type="text" name="name" value="{{ $academicyear->name }}" class="date-own form-control" placeholder="Name" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-sm-12 text-center">

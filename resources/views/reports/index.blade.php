@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label>Select Academic Year: </label>
-                            <input class="date-own form-control" name="academicYear" type="text" required>
+                            <input class="date-own form-control" name="academicYear" type="text" required autocomplete="off">
                         </div>
                         <div class="col-sm-12 text-center my-4">
                             <button type="submit" class="btn btn-primary">Show Reports</button>
