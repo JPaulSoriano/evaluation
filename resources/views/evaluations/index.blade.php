@@ -30,6 +30,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $faculties->links() }}
         </div>
     </div>
 @endsection

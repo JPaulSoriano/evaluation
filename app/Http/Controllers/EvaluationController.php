@@ -21,13 +21,13 @@ class EvaluationController extends Controller
 
     public function index()
     {
-        $faculties = User::role('Faculty')->get();
+        $faculties = User::role('Faculty')->paginate(5);
         return view('evaluations.index',compact('faculties'));
     }
 
     public function myevaluation()
     {
-        $evaluations = Evaluation::where('evaluator_id', Auth::user()->id)->paginate(5);
+        $evaluations = Evaluation::where('evaluator_id', Auth::user()->id)->latest()->paginate(5);
         return view('evaluations.my-evaluations',compact('evaluations'));
     }
 

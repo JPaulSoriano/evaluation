@@ -32,6 +32,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $evaluations->links() }}
         </div>
     </div>
 @endsection
