@@ -34,9 +34,14 @@ class EvaluationController extends Controller
     public function create(User $faculty)
     {
         $sections = Section::all();
-        $questions = Question::where('status', '=', '1')->get();
-        $categories = Category::all();
-        return view('evaluations.create',compact('questions', 'sections', 'faculty', 'categories'));
+
+        $categories = Category::with([
+            'questions' => function ($query) {
+                $query->where('status', 1);
+            }
+        ])->get();
+
+        return view('evaluations.create',compact('sections', 'faculty', 'categories'));
     }
 
     public function store(Request $request, User $faculty)
