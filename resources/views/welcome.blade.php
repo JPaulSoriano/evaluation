@@ -17,6 +17,7 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
+        <img src="{{ asset('images/logo.png') }}" class="img-responsive center-block d-block mx-auto my-3" style="height: 150px">
           <h1 class="font-weight-bold text-white">URBIZTONDO CATHOLIC SCHOOL INC.</h1>
           <p class="lead text-white">Faculty Evaluation System</p>
         </div>
