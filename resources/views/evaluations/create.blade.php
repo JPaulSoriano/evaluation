@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
-            <h3><span class="font-weight-bold">You're Currently Evaluating:</span> {{ $faculty->name }}</h3>
+            <h3><span class="font-weight-bold">You're Currently Evaluating:</span> {{ $faculty->full_name }}</h3>
         </div>
     <form action="{{ route('evaluatestore', $faculty) }}" method="POST" class="w-100">
         @csrf
@@ -63,7 +63,7 @@
             </table>
         </div>
         <div class="col-sm-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit?')">Submit</button>
         </div>
     </form>
     </div>

@@ -26,15 +26,15 @@
             <div class="card">
                 <div class="card-header bg-primary text-white d-flex justify-content-between">
                     Evaluation Report
-                    <button type="button"  class="btn btn-sm btn-secondary" onclick="printJS('printJS-form', 'html')">
+                    <button type="button"  class="btn btn-sm btn-secondary" onclick="printJS({ printable: 'report', type: 'html', header: 'UCS Faculty Evaluation' })">
                         Print
                     </button>
                 </div>
                 <div class="card-body">
-                    <form id="printJS-form">
+                    <form id="report">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div><span class="font-weight-bold">Faculty:</span> {{ $faculty->name }}</div>
+                                <div><span class="font-weight-bold">Faculty:</span> {{ $faculty->full_name }}</div>
                                 <div><span class="font-weight-bold">Section:</span> {{ $selectedSection->name ?? $selectedSection }}</div>
                             </div>
                             <div class="col-sm-6">

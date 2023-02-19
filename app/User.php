@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'lastname', 'firstname', 'mi', 'lrn', 'idno', 'email', 'password',
     ];
 
     /**
@@ -47,5 +47,10 @@ class User extends Authenticatable
     public function facultyEvaluations()
     {
         return $this->hasMany(Evaluation::class, 'faculty_id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->lastname}, {$this->firstname} {$this->mi}";
     }
 }

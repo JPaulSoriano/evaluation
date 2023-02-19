@@ -19,8 +19,32 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
-            <label>Name:</label>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            <label>Lastname:</label>
+            {!! Form::text('lastname', null, array('placeholder' => 'Lastname','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>Firstname:</label>
+            {!! Form::text('firstname', null, array('placeholder' => 'Firstname','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>MI:</label>
+            {!! Form::text('mi', null, array('placeholder' => 'M.I','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>LRN (Optional):</label>
+            {!! Form::text('lrn', null, array('placeholder' => 'LRN','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>ID No:</label>
+            {!! Form::text('idno', null, array('placeholder' => 'ID No','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-sm-12">

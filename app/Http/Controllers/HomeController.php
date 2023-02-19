@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\AcademicYear;
+use App\Evaluation;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $academicyears = AcademicYear::first();
-        return view('home', compact('academicyears'));
+        $totalevaluations = Evaluation::count();
+        return view('home', compact('academicyears', 'totalevaluations'));
     }
 }

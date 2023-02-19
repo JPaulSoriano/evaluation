@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('questions','QuestionController');
     Route::get('activate/{question}', 'QuestionController@activate')->name('activate');
     Route::delete('deactivate/{question}', 'QuestionController@deactivate')->name('deactivate');
+    Route::post('questions/mass_action', 'QuestionController@massAction')->name('questions.mass_action');
     //Academic Year
     Route::resource('academicyears','AcademiCyearController');
     //Evaulations

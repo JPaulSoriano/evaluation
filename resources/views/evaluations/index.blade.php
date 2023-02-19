@@ -23,7 +23,7 @@
                 </tr>
                 @foreach ($faculties as $faculty)
                 <tr>
-                    <td>{{ $faculty->name }}</td>
+                    <td>{{ $faculty->full_name }}</td>
                     <td>
                         <a href="{{ route('evaluate', $faculty) }}" class="btn btn-sm btn-block btn-primary my-1">Evaluate</a>
                     </td>

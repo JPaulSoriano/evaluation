@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AcademicYear extends Model
 {
     protected $fillable = [
-        'name', 'status'
+        'name'
     ];
 
     public function evaluations(){

@@ -1,25 +1,24 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="position-ref">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a class="btn btn-light mx-2" href="{{ url('/home') }}">Home</a>
-            @else
-                <a class="btn btn-light mx-2" href="{{ route('login') }}">Login</a>
-            @endauth
-        </div>
-    @endif
-</div>
 <!-- Full Page Image Header with Vertically Centered Content -->
 <header class="masthead">
+<div class="overlay"></div>
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
-        <img src="{{ asset('images/logo.png') }}" class="img-responsive center-block d-block mx-auto my-3" style="height: 150px">
+          <img src="{{ asset('images/logo.png') }}" class="img-responsive center-block d-block mx-auto my-3" style="height: 150px">
           <h1 class="font-weight-bold text-white">URBIZTONDO CATHOLIC SCHOOL INC.</h1>
           <p class="lead text-white">Faculty Evaluation System</p>
+           @if (Route::has('login'))
+          <div>
+              @auth
+                  <a class="btn btn-light mx-2" href="{{ url('/home') }}">Home</a>
+              @else
+                  <a class="btn btn-light mx-2" href="{{ route('login') }}">Login</a>
+              @endauth
+          </div>
+          @endif
         </div>
       </div>
     </div>

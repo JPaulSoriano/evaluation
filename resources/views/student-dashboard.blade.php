@@ -7,6 +7,6 @@
         </div>
     </div>
     <div class="jumbotron">
-        <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->name }}</span></h1>
+        <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->full_name }}</span></h1>
     </div>
 @endsection

@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
 
         <div class="col-sm-8 my-1">
-            <h3><span class="font-weight-bold">My Evaluations for:</span> {{ $evaluation->faculty->name }}</h3>
+            <h3><span class="font-weight-bold">My Evaluations for:</span> {{ $evaluation->faculty->full_name }}</h3>
             <div class="card my-1">
                 <div class="card-header bg-primary text-white">Rating Legend</div>
                 <div class="card-body">

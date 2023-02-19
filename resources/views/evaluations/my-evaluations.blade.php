@@ -24,7 +24,7 @@
                 </tr>
                 @foreach ($evaluations as $evaluation)
                 <tr>
-                    <td>{{ $evaluation->faculty->name }}</td>
+                    <td>{{ $evaluation->faculty->full_name }}</td>
                     <td>{{ $evaluation->created_at }}</td>
                     <td>
                         <a href="{{ route('evaluateshow', $evaluation) }}" class="btn btn-sm btn-primary">Show</a>

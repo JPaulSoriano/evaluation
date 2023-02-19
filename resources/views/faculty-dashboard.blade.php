@@ -10,6 +10,6 @@
         Current Faculty Evaluation Academic Year: <span class="font-weight-bold">{{ $academicyears->name }}</span>
       </div>
     <div class="jumbotron">
-        <h1 class="mb-5">Welcome!  <span class="font-weight-bold">{{ Auth::user()->name }}</span></h1>
+        <h1 class="mb-5">Welcome!  <span class="font-weight-bold">{{ Auth::user()->full_name }}</span></h1>
     </div>
 @endsection

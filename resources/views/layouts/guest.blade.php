@@ -22,7 +22,7 @@
         .masthead {
         height: 100vh;
         min-height: 500px;
-        background-image: linear-gradient( 178.2deg,  rgba(118,8,23,1) 10.9%, rgba(158,12,33,1) 62.6% );
+        background: url({{ asset('images/bg.jpg') }}) no-repeat center center fixed;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -37,6 +37,23 @@
             right: 10px;
             top: 18px;
         }
+        
+        .masthead .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1;
+        }
+
+        .masthead .container {
+        position: relative;
+        z-index: 2;
+        }
+
     </style>
 </head>
 <body>

@@ -14,7 +14,7 @@ class QuestionController extends Controller
 
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
+        $questions = Question::all();
         return view('questions.index',compact('questions'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -51,4 +51,31 @@ class QuestionController extends Controller
         $question->save();
         return redirect()->route('questions.index');
     }
+
+    public function massAction(Request $request)
+{
+    $request->validate([
+        'action' => 'required',
+        'questions' => 'required|array',
+    ]);
+
+    $action = $request->input('action');
+    $questionIds = $request->input('questions');
+
+    $questions = Question::whereIn('id', $questionIds)->get();
+
+    foreach ($questions as $question) {
+        if ($action == 'activate') {
+            $question->status = 1;
+        } elseif ($action == 'deactivate') {
+            $question->status = 0;
+        }
+
+        $question->save();
+    }
+
+    $message = count($questionIds) . ' questions ' . $action . 'd successfully.';
+    return redirect()->route('questions.index')->with('success', $message);
+}
+
 }

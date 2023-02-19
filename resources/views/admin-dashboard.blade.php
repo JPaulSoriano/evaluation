@@ -7,6 +7,11 @@
         </div>
     </div>
     <div class="jumbotron">
-        <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->name }}</span></h1>
+        <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->full_name }}</span></h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Total Respondents: {{ $totalevaluations}}</h1>
+        </div>
     </div>
 @endsection
