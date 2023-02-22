@@ -81,17 +81,6 @@ class EvaluationController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => 'Contact Administrator']);
         }
-        
-        // Check if evaluator has already evaluated faculty for this subject and academic year
-        $existingEvaluation = Evaluation::where('evaluator_id', Auth::user()->id)
-        ->where('faculty_id', $faculty->id)
-        ->where('subject_id', $subject->id)
-        ->where('academic_year', $input['academic_year'])
-        ->first();
-
-        if ($existingEvaluation) {
-        return back()->withErrors(['error' => 'You have already evaluated this faculty for this subject in the current academic year.']);
-        }
 
         return redirect()->route('evaluations')->with('success','Success!');
     }
