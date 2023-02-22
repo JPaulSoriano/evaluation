@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <table class="table table--bordered my-2">
+    <table class="table table-bordered my-2">
     <tr>
         <th>No</th>
         <th>Question</th>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Evaluation extends Model
 {
     protected $fillable = [
-        'evaluator_id', 'faculty_id','section_id', 'academic_year'
+        'evaluator_id', 'faculty_id','section_id', 'subject_id', 'academic_year'
     ];
 
     public function faculty()
@@ -23,6 +23,11 @@ class Evaluation extends Model
     public function section()
     {
         return $this->belongsTo('App\Section');
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo('App\Subject');
     }
 
     public function academic_year(){

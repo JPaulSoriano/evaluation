@@ -5,6 +5,7 @@ use DB;
 use App\User;
 use Exception;
 use App\Section;
+use App\Subject;
 use App\Category;
 use App\Question;
 use App\Evaluation;
@@ -34,6 +35,7 @@ class EvaluationController extends Controller
     public function create(User $faculty)
     {
         $sections = Section::all();
+        $subjects = Subject::all();
 
         $categories = Category::with([
             'questions' => function ($query) {
@@ -41,15 +43,16 @@ class EvaluationController extends Controller
             }
         ])->get();
 
-        return view('evaluations.create',compact('sections', 'faculty', 'categories'));
+        return view('evaluations.create',compact('sections', 'subjects', 'faculty', 'categories'));
     }
 
-    public function store(Request $request, User $faculty)
+    public function store(Request $request, User $faculty, Subject $subject)
     {
         // dd($request->all());
-
+      
         $request->validate([
             'section_id' => 'required',
+            'subject_id' => 'required',
             'rates' => 'required|array',
             'rates.*' => 'required|integer',
         ]);
@@ -78,7 +81,17 @@ class EvaluationController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => 'Contact Administrator']);
         }
+        
+        // Check if evaluator has already evaluated faculty for this subject and academic year
+        $existingEvaluation = Evaluation::where('evaluator_id', Auth::user()->id)
+        ->where('faculty_id', $faculty->id)
+        ->where('subject_id', $subject->id)
+        ->where('academic_year', $input['academic_year'])
+        ->first();
 
+        if ($existingEvaluation) {
+        return back()->withErrors(['error' => 'You have already evaluated this faculty for this subject in the current academic year.']);
+        }
 
         return redirect()->route('evaluations')->with('success','Success!');
     }

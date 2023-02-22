@@ -9,7 +9,7 @@
 
     <title>UCS Faculty Evaluation System</title>
 
-
+    @yield('styles')
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
@@ -37,9 +37,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            </li> -->
                             @if (Route::has('register'))
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -68,6 +68,9 @@
                                     <a class="nav-link" href="{{ route('sections.index') }}">{{ __('Sections') }}</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('subjects.index') }}">{{ __('Subjects') }}</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('academicyears.index') }}">{{ __('Academic Year') }}</a>
                                 </li>
                                 <li class="nav-item">
@@ -75,9 +78,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports') }}</a>
                                 </li>
                             @endcan
                             <li class="nav-item dropdown">

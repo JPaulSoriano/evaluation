@@ -30,6 +30,16 @@
                 </select>
             </div>
         </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label>Select Your Subject for {{ $faculty->full_name }}</label>
+                <select class="form-control" name="subject_id">
+                @foreach ($subjects as $subject)
+                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                @endforeach
+                </select>
+            </div>
+        </div>
         <div class="col-sm-12 my-1">
             <div class="card">
                 <div class="card-header bg-primary text-white">Rating Legend</div>

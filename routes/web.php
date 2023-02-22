@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(['register' => false]);
@@ -42,7 +42,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('evaluations/{evaluation}/show', 'EvaluationController@show')->name('evaluateshow');
     //Sections
     Route::resource('sections','SectionController');
+    //Subjects
+    Route::resource('subjects','SubjectController');
     //Reports
     Route::get('reports', 'ReportController@index')->name('reports');
     Route::get('reports/{academicYear}/{faculty}/show', 'ReportController@show')->name('reportsshow');
+    Route::get('/reports/subjects', 'ReportController@indexSubject')->name('reportssubjects');
+    Route::get('reports/{academicYear}/{faculty}/showSubject', 'ReportController@showSubject')->name('reportsshowSubject');
+    Route::get('/faculty-rankings', 'ReportController@facultyRankings')->name('ranking');
+
+
+
+
 });

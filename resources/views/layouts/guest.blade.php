@@ -19,40 +19,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <style>
-        .masthead {
-        height: 100vh;
-        min-height: 500px;
-        background: url({{ asset('images/bg.jpg') }}) no-repeat center center fixed;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        }
+            .login {
+            min-height: 100vh;
+            }
 
-        .position-ref {
-            position: relative;
-        }
+            .bg-image {
+            background-image: url('{{ asset('images/bg.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            }
 
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-        
-        .masthead .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: black;
-        opacity: 0.5;
-        z-index: 1;
-        }
-
-        .masthead .container {
-        position: relative;
-        z-index: 2;
-        }
+            .login-heading {
+            font-weight: 300;
+            }
 
     </style>
 </head>

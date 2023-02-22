@@ -14,4 +14,8 @@
             <h1>Total Respondents: {{ $totalevaluations}}</h1>
         </div>
     </div>
+    <a href="{{ route('reports') }}" class="btn btn-primary p-5">Reports per Section</a>
+    <a href="{{ route('reportssubjects') }}" class="btn btn-primary p-5">Reports per Subject</a>
+    <a href="{{ route('ranking') }}" class="btn btn-primary p-5">Ranking</a>
+
 @endsection
