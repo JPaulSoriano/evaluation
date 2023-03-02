@@ -52,15 +52,4 @@
   </div>
 </div>
 
-
-@if (Route::has('login'))
-    <div>
-        @auth
-            <a class="btn btn-light mx-2" href="{{ url('/home') }}">Home</a>
-        @else
-            <a class="btn btn-light mx-2" href="{{ route('login') }}">Login</a>
-        @endauth
-    </div>
- @endif
-
 @endsection
