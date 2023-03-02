@@ -16,7 +16,7 @@ class CreateStudentUserSeeder extends Seeder
             'firstname' => 'User',
             'mi' => 'S',
             'lrn' => '000',
-            'idno' => '2',
+            'idno' => '654321',
         	'email' => 'student@gmail.com',
         	'password' => bcrypt('password')
         ]);

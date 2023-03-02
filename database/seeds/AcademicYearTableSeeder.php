@@ -13,7 +13,7 @@ class AcademicYearTableSeeder extends Seeder
     public function run()
     {
         AcademicYear::create([
-        	'name' => '2022',
+        	'name' => '2023',
         ]);
     }
 }

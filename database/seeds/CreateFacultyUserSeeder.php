@@ -15,7 +15,7 @@ class CreateFacultyUserSeeder extends Seeder
             'lastname' => 'Faculty',
             'firstname' => 'User',
             'mi' => 'F',
-            'idno' => '1',
+            'idno' => '123456',
         	'email' => 'faculty@gmail.com',
         	'password' => bcrypt('password')
         ]);

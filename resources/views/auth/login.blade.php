@@ -18,9 +18,9 @@
                         <form method="POST" action="{{ route('login') }}">
                           @csrf
                           <div class="form-group">
-                              <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
-                                  @error('email')
+                              <label for="idno" class="col-form-label text-md-right">{{ __('ID Number') }}</label>
+                                  <input id="idno" type="text" class="form-control @error('idno') is-invalid @enderror" name="idno" value="{{ old('idno') }}" required autocomplete="idno" autofocus placeholder="ID Number">
+                                  @error('idno')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
                                       </span>

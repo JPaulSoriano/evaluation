@@ -16,7 +16,7 @@ class CreateAdminUserSeeder extends Seeder
         	'lastname' => 'Admin',
             'firstname' => 'User',
             'mi' => 'A',
-            'idno' => '0',
+            'idno' => '000000',
         	'email' => 'admin@gmail.com',
         	'password' => bcrypt('password')
         ]);
