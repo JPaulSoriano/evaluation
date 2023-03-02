@@ -202,23 +202,47 @@ class ReportController extends Controller
     }
 
 
-    public function facultyRankings()
-    {
-        $faculty = User::role('Faculty')->get();
-        $ranked_faculty = $faculty->map(function ($f) {
-            $evaluations = Evaluation::where('faculty_id', $f->id)->with('questions')->get();
-            $overall_score = 0;
-            $total_weight = 0;
-            foreach ($evaluations as $e) {
-                $weight = $e->questions->sum('pivot.rate');
-                $total_weight += $weight;
-                $overall_score += $weight * $e->questions->avg('pivot.rate');
-            }
-            $overall_score /= $total_weight;
-            return ['faculty' => $f, 'overall_score' => $overall_score];
-        })->sortByDesc('overall_score');
+    // public function facultyRankings()
+    // {
+    //     $faculty = User::role('Faculty')->get();
+    //     $ranked_faculty = $faculty->map(function ($f) {
+    //         $evaluations = Evaluation::where('faculty_id', $f->id)->with('questions')->get();
+    //         $overall_score = 0;
+    //         $total_weight = 0;
+    //         foreach ($evaluations as $e) {
+    //             $weight = $e->questions->sum('pivot.rate');
+    //             $total_weight += $weight;
+    //             $overall_score += $weight * $e->questions->avg('pivot.rate');
+    //         }
+    //         $overall_score /= $total_weight;
+    //         return ['faculty' => $f, 'overall_score' => $overall_score];
+    //     })->sortByDesc('overall_score');
         
-        return view('reports.ranking', ['ranked_faculty' => $ranked_faculty]);
-    }
+    //     return view('reports.ranking', ['ranked_faculty' => $ranked_faculty]);
+    // }
+
+    public function facultyRankings()
+{
+    $faculty = User::role('Faculty')->get();
+    $ranked_faculty = $faculty->map(function ($f) {
+        $evaluations = Evaluation::where('faculty_id', $f->id)->with('questions')->get();
+        $overall_score = 0;
+        $total_weight = 0;
+        foreach ($evaluations as $e) {
+            $weight = $e->questions->sum('pivot.rate');
+            $total_weight += $weight;
+            $overall_score += $weight * $e->questions->avg('pivot.rate');
+        }
+        if ($total_weight == 0) {
+            $overall_score = 0;
+        } else {
+            $overall_score /= $total_weight;
+        }
+        return ['faculty' => $f, 'overall_score' => $overall_score];
+    })->sortByDesc('overall_score');
+    
+    return view('reports.ranking', ['ranked_faculty' => $ranked_faculty]);
+}
+
 
 }
