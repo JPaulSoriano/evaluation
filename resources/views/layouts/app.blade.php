@@ -14,7 +14,28 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('css/print.min.css') }}" rel="stylesheet">
-
+    <style>
+    body {
+    background: url('{{ asset('images/bg.jpg') }}') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 60px;
+    }
+    html {
+    position: relative;
+    min-height: 100%;
+    }
+    .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -71,7 +92,7 @@
                                     <a class="nav-link" href="{{ route('subjects.index') }}">{{ __('Subjects') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('academicyears.index') }}">{{ __('Academic Year') }}</a>
+                                    <a class="nav-link" href="{{ route('academicyears.index') }}">{{ __('A.Y') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
@@ -108,6 +129,18 @@
                 @yield('content')
             </div>
         </main>
+        <footer class="footer mt-auto bg-primary">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6">
+                <span class="text-white">© Pangasinan State University San Carlos Campus</span>
+            </div>
+            <div class="col-md-6 text-md-right">
+                    <span class="text-white text-right">Dev: 09126035959</span>
+                </div>
+            </div>
+        </div>
+        </footer>
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
