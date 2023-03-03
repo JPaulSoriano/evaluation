@@ -16,7 +16,7 @@
     <link href="{{ asset('css/print.min.css') }}" rel="stylesheet">
     <style>
     body {
-    background: url('{{ asset('images/bg.jpg') }}') no-repeat center center fixed;
+    background: url('{{ asset('images/bg2.jpg') }}') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
