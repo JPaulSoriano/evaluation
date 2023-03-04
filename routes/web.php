@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('deactivate/{question}', 'QuestionController@deactivate')->name('deactivate');
     Route::post('questions/mass_action', 'QuestionController@massAction')->name('questions.mass_action');
     //Academic Year
-    Route::resource('academicyears','AcademiCyearController');
+    Route::resource('academicyears','AcademicYearController');
     //Evaulations
     Route::get('evaluations', 'EvaluationController@index')->name('evaluations');
     Route::get('my-evaluations', 'EvaluationController@myevaluation')->name('myevaluations');
