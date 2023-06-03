@@ -45,13 +45,5 @@ Route::group(['middleware' => ['auth']], function() {
     //Subjects
     Route::resource('subjects','SubjectController');
     //Reports
-    Route::get('reports', 'ReportController@index')->name('reports');
-    Route::get('reports/{academicYear}/{faculty}/show', 'ReportController@show')->name('reportsshow');
-    Route::get('/reports/subjects', 'ReportController@indexSubject')->name('reportssubjects');
-    Route::get('reports/{academicYear}/{faculty}/showSubject', 'ReportController@showSubject')->name('reportsshowSubject');
-    Route::get('/faculty-rankings', 'ReportController@facultyRankings')->name('ranking');
-
-
-
 
 });

@@ -20,7 +20,7 @@ class CreateEvaluationsTable extends Migration
             $table->foreignId('section_id');
             $table->foreignId('subject_id');
             $table->string('academic_year');
-            $table->unique(['evaluator_id', 'faculty_id', 'subject_id', 'academic_year'], 'evaluations_unique_evaluator_faculty_subject_year');
+            $table->string('quarter');
             $table->timestamps();
         });
     }

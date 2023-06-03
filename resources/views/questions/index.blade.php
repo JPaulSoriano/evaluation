@@ -8,11 +8,11 @@
         </div>
     @endif
 
-    <a class="btn btn-primary" href="{{ route('questions.create') }}">New</a>
-    <form action="{{ route('questions.mass_action') }}" method="POST">
+<a class="btn btn-primary" href="{{ route('questions.create') }}">Add Question</a>
+<form action="{{ route('questions.mass_action') }}" method="POST">
     @csrf
     <div class="row my-2">
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
             <select class="form-control" name="action" required>
                 <option value="">Choose an action</option>
                 <option value="activate">Activate selected</option>
@@ -21,13 +21,12 @@
         </div>
         <div class="col-sm-3">
             <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+        </div> -->
         <div class="col-sm-6">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="select-all">
-                <label class="form-check-label" for="select-all">
-                    Select All
-                </label>
+            <div class="btn-group" role="group" aria-label="Action">
+                <button type="button" class="btn btn-warning" id="select-all-btn">Select All</button>
+                <button type="submit" name="action" value="activate" class="btn btn-primary">Activate selected</button>
+                <button type="submit" name="action" value="deactivate" class="btn btn-secondary">Deactivate selected</button>
             </div>
         </div>
     </div>
@@ -36,7 +35,9 @@
         <th>No</th>
         <th>Question</th>
         <th>Category</th>
-        <th width="100px">Status</th>
+        <th width="100px">
+            Status
+        </th>
     </tr>
     @foreach ($questions as $question)
         <tr>
@@ -53,7 +54,7 @@
 @endsection
 @section('scripts')
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Get the "Select All" checkbox
         const selectAllCheckbox = document.getElementById('select-all');
@@ -66,6 +67,23 @@
             // Toggle the checkboxes of all the questions
             questionCheckboxes.forEach(function(questionCheckbox) {
                 questionCheckbox.checked = selectAllCheckbox.checked;
+            });
+        });
+    });
+</script> -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the "Select All" button
+        const selectAllBtn = document.getElementById('select-all-btn');
+
+        // Add a click event listener to the "Select All" button
+        selectAllBtn.addEventListener('click', function() {
+            // Get all the checkboxes of the questions
+            const questionCheckboxes = document.querySelectorAll('input[name="questions[]"]');
+
+            // Toggle the checkboxes of all the questions
+            questionCheckboxes.forEach(function(questionCheckbox) {
+                questionCheckbox.checked = !questionCheckbox.checked;
             });
         });
     });

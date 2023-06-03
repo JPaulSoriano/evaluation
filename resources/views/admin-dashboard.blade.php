@@ -16,13 +16,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <a href="{{ route('reports') }}" class="btn btn-primary p-5 btn-block my-2">Reports per Section</a>
-        </div>
-        <div class="col-sm-4">
-            <a href="{{ route('reportssubjects') }}" class="btn btn-primary p-5 btn-block my-2">Reports per Subject</a>
-        </div>
-        <div class="col-sm-4">
-            <a href="{{ route('ranking') }}" class="btn btn-primary p-5 btn-block my-2">Ranking</a>
+            <a href="" class="btn btn-primary p-5 btn-block my-2">Reports per Section in AY</a>
         </div>
     </div>
 

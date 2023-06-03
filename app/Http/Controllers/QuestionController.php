@@ -53,29 +53,29 @@ class QuestionController extends Controller
     }
 
     public function massAction(Request $request)
-{
-    $request->validate([
-        'action' => 'required',
-        'questions' => 'required|array',
-    ]);
+    {
+        $request->validate([
+            'action' => 'required',
+            'questions' => 'required|array',
+        ]);
 
-    $action = $request->input('action');
-    $questionIds = $request->input('questions');
+        $action = $request->input('action');
+        $questionIds = $request->input('questions');
 
-    $questions = Question::whereIn('id', $questionIds)->get();
+        $questions = Question::whereIn('id', $questionIds)->get();
 
-    foreach ($questions as $question) {
-        if ($action == 'activate') {
-            $question->status = 1;
-        } elseif ($action == 'deactivate') {
-            $question->status = 0;
+        foreach ($questions as $question) {
+            if ($action == 'activate') {
+                $question->status = 1;
+            } elseif ($action == 'deactivate') {
+                $question->status = 0;
+            }
+
+            $question->save();
         }
 
-        $question->save();
+        $message = count($questionIds) . ' questions ' . $action . 'd successfully.';
+        return redirect()->route('questions.index')->with('success', $message);
     }
-
-    $message = count($questionIds) . ' questions ' . $action . 'd successfully.';
-    return redirect()->route('questions.index')->with('success', $message);
-}
 
 }

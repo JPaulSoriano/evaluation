@@ -25,7 +25,8 @@ class AcademicYearController extends Controller
     public function update(Request $request, AcademicYear $academicyear)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'quarter' => 'required'
         ]);
 
         $academicyear->update($request->all());

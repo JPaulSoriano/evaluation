@@ -23,7 +23,10 @@ class EvaluationController extends Controller
     public function index()
     {
         $faculties = User::role('Faculty')->paginate(5);
-        return view('evaluations.index',compact('faculties'));
+        $evaluatorId = Auth::id();
+        $currentAcademicYear = AcademicYear::latest()->first()->name;
+        $currentQuarter = AcademicYear::latest()->first()->quarter;
+        return view('evaluations.index',compact('faculties', 'evaluatorId', 'currentAcademicYear', 'currentQuarter'));
     }
 
     public function myevaluation()
@@ -64,6 +67,7 @@ class EvaluationController extends Controller
             $input = $request->all();
             $input['faculty_id'] = $faculty->id;
             $input['academic_year'] = AcademicYear::latest()->first()->name;
+            $input['quarter'] = AcademicYear::latest()->first()->quarter;
 
             $rates = collect($request->rates)->map(function ($value, $key) {
                 return ['rate' => $value ];

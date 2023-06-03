@@ -14,6 +14,7 @@ class AcademicYearTableSeeder extends Seeder
     {
         AcademicYear::create([
         	'name' => '2023',
+            'quarter' => '1st',
         ]);
     }
 }
