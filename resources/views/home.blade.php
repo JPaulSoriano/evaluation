@@ -10,6 +10,10 @@
         @include('faculty-dashboard');
     @endcan
 
+    @can('head faculty')
+        @include('headfaculty-dashboard');
+    @endcan
+
     @can('admin')
         @include('admin-dashboard');
     @endcan

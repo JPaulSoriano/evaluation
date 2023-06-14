@@ -45,5 +45,13 @@ Route::group(['middleware' => ['auth']], function() {
     //Subjects
     Route::resource('subjects','SubjectController');
     //Reports
+    Route::get('/ranking', 'ReportController@ranking')->name('faculties.ranking');
+    Route::get('/faculties', 'ReportController@index')->name('faculties.index');
+    Route::get('/faculties/{faculty}/report', 'ReportController@report')->name('faculties.report');
+    Route::get('/faculties/{faculty}/reportQuarter', 'ReportController@reportQuarter')->name('faculties.reportQuarter');
+    Route::get('/faculties/{faculty}/reportCategory', 'ReportController@reportCategory')->name('faculties.reportCategory');
+    Route::get('/faculties/{faculty}/reportAcademicYear', 'ReportController@reportAcademicYear')->name('faculties.reportAcademicYear');
+    Route::get('/faculties/{faculty}/reportSection', 'ReportController@reportSection')->name('faculties.reportSection');
+    Route::get('/faculties/{faculty}/reportSubject', 'ReportController@reportSubject')->name('faculties.reportSubject');
 
 });

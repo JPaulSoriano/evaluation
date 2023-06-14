@@ -15,7 +15,8 @@ class RolesAndPermissionsTableSeeder extends Seeder
        $permissions = [
            'admin',
            'faculty',
-           'student'
+           'student',
+           'head faculty'
         ];
 
         foreach ($permissions as $permission) {
@@ -30,5 +31,9 @@ class RolesAndPermissionsTableSeeder extends Seeder
 
         $role = Role::create(['name' => 'Student']);
         $role->givePermissionTo('student');
+
+        
+        $role = Role::create(['name' => 'Head Faculty']);
+        $role->givePermissionTo('head faculty');
     }
 }

@@ -24,8 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $academicyears = AcademicYear::first();
+        $academicyears = AcademicYear::latest()->first()->name;
+        $quarter = AcademicYear::latest()->first()->quarter;
         $totalevaluations = Evaluation::count();
-        return view('home', compact('academicyears', 'totalevaluations'));
+        return view('home', compact('academicyears', 'quarter', 'totalevaluations'));
     }
 }
