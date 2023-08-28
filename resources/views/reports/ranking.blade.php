@@ -17,12 +17,18 @@
         </div>
     </div>
 </div>
+<button class="btn btn-sm btn-primary mb-2" type="button" onclick="
+    printJS({
+        printable: 'ranking',
+        type: 'html',
+        header: '<div style=\'display: flex; align-items: center;\'><img src=\'{{ asset('images/logo.png') }}\' style=\'max-width: 100px; margin-right: 10px;\'><h3>Faculty Ranking for A.Y. {{ $currentAcademicYear }} {{ Request::input('quarter') ? ' - Quarter ' . Request::input('quarter') : ' - All Quarters' }}</h3></div>'
+    })
+">Print</button>
+
+<form id="ranking">
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-sm btn-primary mb-2" type="button" onclick="printJS('printJS-form', 'html')">
-            Print
-        </button>
-        <table class="table table-bordered" id="printJS-form">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Rank</th>
@@ -35,11 +41,12 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $facultyRanking['faculty']->full_name }}</td>
-                        <td>{{ $facultyRanking['averageRate'] }}</td>
+                        <td>{{ number_format($facultyRanking['averageRate'], 2) }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+</form>
 @endsection

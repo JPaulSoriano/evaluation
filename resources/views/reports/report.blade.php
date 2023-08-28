@@ -13,31 +13,32 @@
                 </select>
             </form>
         </div>
+    <button class="btn btn-sm btn-primary mb-2" type="button" onclick="
+        printJS({
+                printable: 'report',
+                type: 'html',
+                header: '<div style=\'display: flex; align-items: center;\'><img src=\'{{ asset('images/logo.png') }}\' style=\'max-width: 100px; margin-right: 10px;\'><h3>{{ $faculty->full_name }} Report per Question for A.Y. {{ $currentAcademicYear }} {{ Request::input('quarter') ? ' - Quarter ' . Request::input('quarter') : ' - All Quarters' }}</h3></div>'
+            })
+    ">Print</button>
     </div>
-    <div class="col-sm-12">
-        <button class="btn btn-sm btn-primary mb-2" type="button" onclick="printJS('printJS-form', 'html')">
-            Print
-        </button>
-        <table class="table table-bordered" id="printJS-form">
-            <thead>
-                <tr>
-                    <th colspan="2">{{ $faculty->full_name }} Report per Question for A.Y. {{ $currentAcademicYear }} {{ Request::input('quarter') ? ' - Quarter ' . Request::input('quarter') : ' - All Quarters' }}</th>
-                </tr>
-            </thead>
-            <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Average Rate</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($averageRates as $question)
+    <form id="report">
+        <div class="col-sm-12">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>{{ $question['question'] }}</td>
-                        <td>{{ $question['average_rate'] }}</td>
+                        <th>Question</th>
+                        <th>Average Rate</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach ($averageRates as $question)
+                        <tr>
+                            <td>{{ $question['question'] }}</td>
+                            <td>{{ number_format($question['average_rate'], 2) }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </form>
 @endsection

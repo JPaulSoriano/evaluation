@@ -243,7 +243,7 @@ class ReportController extends Controller
             return $b['averageRate'] <=> $a['averageRate'];
         });
 
-        return view('reports.ranking', compact('facultyRankings'));
+        return view('reports.ranking', compact('facultyRankings', 'currentAcademicYear'));
     }
 
     

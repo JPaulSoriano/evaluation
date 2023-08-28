@@ -35,7 +35,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('images/logo.png') }}" width="50" height="50" alt=""> UCS Faculty Evaluation System
                 </a>
@@ -81,7 +81,7 @@
                                     <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('sections.index') }}">{{ __('Sections') }}</a>
+                                    <a class="nav-link" href="{{ route('sections.index') }}">{{ __('Grade and Section') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('subjects.index') }}">{{ __('Subjects') }}</a>

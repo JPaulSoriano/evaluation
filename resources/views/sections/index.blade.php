@@ -12,7 +12,7 @@
     <table class="table table-bordered my-2">
         <tr>
             <th>No</th>
-            <th>Name</th>
+            <th>Grade and Section</th>
         </tr>
         @foreach ($sections as $section)
         <tr>
