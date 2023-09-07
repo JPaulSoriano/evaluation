@@ -17,7 +17,7 @@
         <h1>Welcome!  <span class="font-weight-bold">{{ Auth::user()->full_name }}</span></h1>
     </div>
     <h3>Steps how to evaluate a faculty</h3>
-    <ol type="1">
+    <!-- <ol type="1">
         <li>Go to Evaluation Tab</li>
         <li>Look for the Faculty that you want to evaluate</li>
         <li>Click the Evaluate button</li>
@@ -25,7 +25,7 @@
         <li>Choose what subject the faculty teaches to your section</li>
         <li>Read the Rating Legend</li>
         <li>You can now evaluate the Faculty by Rating the faculty from 1-5</li>
-    </ol>
+    </ol> -->
     <div class="row">
         <div class="col-sm-12">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -34,7 +34,7 @@
                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="6"></li>
             </ol>
