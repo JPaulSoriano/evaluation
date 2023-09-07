@@ -37,7 +37,10 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('images/logo.png') }}" width="50" height="50" alt=""> UCS Faculty Evaluation System
+                <img src="{{ asset('images/logo.png') }}" width="50px" height="50px" alt="">
+                UCS Faculty Evaluation System
+                <br>
+                <span style="margin-left: 60px; font-size: 14px;">Welcome! {{ Auth::user()->full_name }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
